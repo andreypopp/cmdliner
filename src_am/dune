@@ -1,0 +1,11 @@
+(library
+ (name cmdliner_am)
+ (public_name cmdliner.am))
+
+(rule
+  (target cmdliner_am.ml)
+  (mode promote)
+  (deps (source_tree ../src) ./gen.sh)
+  (action
+    (with-stdout-to %{target}
+      (run bash ./gen.sh))))
